@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2a89bb">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/event_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        app:civ_border_color="@android:color/background_light"
+        app:civ_border_width="2dp" />
+
+    <TextView
+        android:id="@+id/event_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/event_image"
+        android:layout_toRightOf="@+id/event_image"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/event_details_btn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detaylar"
+        android:layout_alignBottom="@+id/event_image"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/event_time_txtView"
+        android:layout_alignBottom="@+id/event_image"
+        android:layout_toRightOf="@+id/event_image"
+        android:layout_toEndOf="@+id/event_image"
+        android:backgroundTint="#3b3636"
+        android:textColor="#49cb56" />
+
+</RelativeLayout>
