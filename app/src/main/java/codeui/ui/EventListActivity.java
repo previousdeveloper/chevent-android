@@ -20,13 +20,15 @@ public class EventListActivity extends AppCompatActivity {
 
     private ListView eventListView;
     private EventListAdapter customPhotosAdapter;
+    private EventListResponse eventListResponse = new EventListResponse();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_list);
-        eventListView = (ListView) findViewById(R.id.event_listview);
+
         getEventList();
+        eventListView = (ListView) findViewById(R.id.event_listview);
 
 
     }
@@ -35,13 +37,18 @@ public class EventListActivity extends AppCompatActivity {
     private void getEventList() {
         EventService eventService = new EventService();
 
-        eventService.getEventList().getDetails(new Callback<EventListResponse>() {
+        eventService.eventServiceAdapter().getDetails(new Callback<EventListResponse>() {
             @Override
             public void success(EventListResponse eventResponse, Response response) {
 
+                eventListResponse.setItem(eventResponse.getItem());
+
                 customPhotosAdapter = new EventListAdapter(getApplicationContext(),
-                        R.layout.custom_eventlist_adapter, eventResponse.getItem());
+                        R.layout.custom_eventlist_adapter, eventListResponse.getItem());
+
                 eventListView.setAdapter(customPhotosAdapter);
+
+
             }
 
             @Override

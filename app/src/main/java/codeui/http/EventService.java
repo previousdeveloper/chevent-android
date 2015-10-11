@@ -11,7 +11,7 @@ public class EventService {
 
     public final static String URL = "http://apifn.com/api/v1/events";
 
-    public IEventClient getEventList() {
+    public IEventClient eventServiceAdapter() {
         RestAdapter restAdapter = new RestAdapter.Builder().setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(URL)
                 .build();
@@ -20,4 +20,5 @@ public class EventService {
 
         return _eventClient;
     }
+
 }
