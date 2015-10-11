@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/previousdeveloper/chevent-android/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
+        <dex dex="/Users/previousdeveloper/chevent-android/app/build/intermediates/pre-dexed/debug/classes-5c7007c3586fff03669cf62ac778871b890fc100.jar" />
+    </item>
+
+</items>
