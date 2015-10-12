@@ -26,5 +26,6 @@ dependencies {
     compile 'pl.tajchert:waitingdots:0.2.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'com.joanzapata.android:android-iconify:1.0.9'
+    compile 'com.joanzapata.iconify:android-iconify-material:2.1.0'
 }

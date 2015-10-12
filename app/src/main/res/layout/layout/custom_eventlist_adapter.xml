@@ -74,7 +74,7 @@
                     android:text="Ücretsiz"
                     android:id="@+id/event_price_txtView"
                     android:singleLine="true"
-                    android:layout_weight="0.49"
+                    android:layout_weight=".3"
                     android:gravity="left"
                     android:textSize="14dp"
                     android:textColor="#e5e5e5" />
@@ -86,7 +86,7 @@
                     android:text="Detay"
                     android:id="@+id/event_details_textView"
                     android:singleLine="true"
-                    android:layout_weight="1.22"
+                    android:layout_weight=".3"
                     android:gravity="center"
                     android:textSize="14dp"
                     android:textColor="#e5e5e5"

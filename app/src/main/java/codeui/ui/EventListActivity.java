@@ -30,9 +30,7 @@ public class EventListActivity extends AppCompatActivity {
         getEventList();
         eventListView = (ListView) findViewById(R.id.event_listview);
 
-
     }
-
 
     private void getEventList() {
         EventService eventService = new EventService();
