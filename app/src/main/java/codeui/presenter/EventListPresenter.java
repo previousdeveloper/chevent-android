@@ -50,7 +50,11 @@ public class EventListPresenter {
                     public void onNext(EventListResponse eventListResponse) {
 
 
-                        mEventActivity.displayData(eventListResponse);
+                        try {
+                            mEventActivity.displayData(eventListResponse);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
 
                     }

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 import roboguice.activity.RoboActivity;
@@ -23,6 +24,7 @@ public class ProgressBarHandler {
     private ProgressBar mProgressBar;
     private Context mContext;
 
+    @Inject
     public ProgressBarHandler(Context context) {
         mContext = context;
 

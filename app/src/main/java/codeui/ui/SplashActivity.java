@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        //progress
+
         dotsTextView = (DotsTextView) findViewById(R.id.dots);
 
         dotsTextView.start();

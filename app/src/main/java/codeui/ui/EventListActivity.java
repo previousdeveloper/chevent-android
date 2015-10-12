@@ -38,11 +38,16 @@ public class EventListActivity extends RoboActivity {
 
     private EventListPresenter mEventListPresenter;
 
+    @Inject
+    private ProgressBarHandler mProgressBarHandler;
+
     private List<EventResponse> mEventResponse = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
 
         mCustomPhotosAdapter = new EventListAdapter(getApplicationContext(),
@@ -52,17 +57,21 @@ public class EventListActivity extends RoboActivity {
 
 
         mEventListPresenter = new EventListPresenter(this, mEventService);
-
+        mProgressBarHandler.show();
         mEventListPresenter.getEventList();
 
 
     }
 
-    public void displayData(EventListResponse eventListResponse) {
+    public void displayData(EventListResponse eventListResponse) throws InterruptedException {
 
         mCustomPhotosAdapter.clear();
         mCustomPhotosAdapter.addAll(eventListResponse.getItem());
         mCustomPhotosAdapter.notifyDataSetInvalidated();
+
+        mProgressBarHandler.hide();
+
+
     }
 
 
