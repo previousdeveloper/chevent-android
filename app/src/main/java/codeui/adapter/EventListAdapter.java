@@ -1,6 +1,5 @@
 package codeui.adapter;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.inject.Singleton;
 import com.joanzapata.android.iconify.Iconify;
 import com.squareup.picasso.Picasso;
 
@@ -27,15 +28,18 @@ import codeui.model.EventResponse;
  * Updated by coskudemirhan on 11.10.2015.
  */
 
-
+@Singleton
 public class EventListAdapter extends ArrayAdapter<EventResponse> {
 
     private List<EventResponse> events;
     private Context context;
     int layoutResId;
 
+
     public EventListAdapter(Context context, int layoutResId, List<EventResponse> events) {
+
         super(context, layoutResId, events);
+
         this.context = context;
         this.events = events;
         this.layoutResId = layoutResId;
@@ -47,7 +51,7 @@ public class EventListAdapter extends ArrayAdapter<EventResponse> {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
-        @SuppressLint("ViewHolder") View view = inflater.inflate(R.layout.custom_eventlist_adapter, parent, false);
+        View view = inflater.inflate(R.layout.custom_eventlist_adapter, parent, false);
 
 
         photoHolder = new PhotoHolder();
@@ -68,12 +72,9 @@ public class EventListAdapter extends ArrayAdapter<EventResponse> {
 
         String detailUrl = events.get(position).getEvent_url();
 
-        if (!detailUrl.startsWith("http://") && !detailUrl.startsWith("https://"))
-        {
+        if (!detailUrl.startsWith("http://") && !detailUrl.startsWith("https://")) {
             photoHolder.eventDetailsBtn.setVisibility(View.INVISIBLE);
-        }
-        else
-        {
+        } else {
             photoHolder.eventDetailsBtn.setOnClickListener(new OpenBrowserClick((String) detailUrl) {
                 @Override
                 public void onClick(View v) {

@@ -1,58 +1,69 @@
 package codeui.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+
+import com.google.inject.Inject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import codeui.adapter.EventListAdapter;
 import codeui.chevent.R;
+import codeui.helper.ProgressBarHandler;
 import codeui.http.EventService;
 import codeui.model.EventListResponse;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import codeui.model.EventResponse;
+import codeui.presenter.EventListPresenter;
+import roboguice.activity.RoboActivity;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
 
 /**
  * Created by previousdeveloper on 11.10.2015.
  */
 
-public class EventListActivity extends AppCompatActivity {
+@ContentView(R.layout.event_list)
+public class EventListActivity extends RoboActivity {
 
-    private ListView eventListView;
-    private EventListAdapter customPhotosAdapter;
-    private EventListResponse eventListResponse = new EventListResponse();
+
+    @InjectView(R.id.event_listview)
+    ListView mEventListView;
+
+    private EventListAdapter mCustomPhotosAdapter;
+
+    @Inject
+    private EventService mEventService;
+
+
+    private EventListPresenter mEventListPresenter;
+
+    private List<EventResponse> mEventResponse = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_list);
 
-        getEventList();
-        eventListView = (ListView) findViewById(R.id.event_listview);
+
+        mCustomPhotosAdapter = new EventListAdapter(getApplicationContext(),
+                R.layout.custom_eventlist_adapter, mEventResponse);
+
+        mEventListView.setAdapter(mCustomPhotosAdapter);
+
+
+        mEventListPresenter = new EventListPresenter(this, mEventService);
+
+        mEventListPresenter.getEventList();
+
 
     }
 
-    private void getEventList() {
-        EventService eventService = new EventService();
+    public void displayData(EventListResponse eventListResponse) {
 
-        eventService.eventServiceAdapter().getDetails(new Callback<EventListResponse>() {
-            @Override
-            public void success(EventListResponse eventResponse, Response response) {
-
-                eventListResponse.setItem(eventResponse.getItem());
-
-                customPhotosAdapter = new EventListAdapter(getApplicationContext(),
-                        R.layout.custom_eventlist_adapter, eventListResponse.getItem());
-
-                eventListView.setAdapter(customPhotosAdapter);
-
-
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-
-            }
-        });
+        mCustomPhotosAdapter.clear();
+        mCustomPhotosAdapter.addAll(eventListResponse.getItem());
+        mCustomPhotosAdapter.notifyDataSetInvalidated();
     }
+
+
 }

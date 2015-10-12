@@ -1,10 +1,14 @@
 package codeui.http;
 
+import javax.inject.Singleton;
+
 import retrofit.RestAdapter;
 
 /**
  * Created by previousdeveloper on 11.10.2015.
  */
+
+@Singleton
 public class EventService {
 
     private IEventClient _eventClient;
